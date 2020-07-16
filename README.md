@@ -82,18 +82,18 @@ The UI is already created at the start of the project, but the game has not been
     - [x] If the value returned from the `isColumnFull` method on the `Game` object is `false`, then remove the "full" class to the element selected in the previous step.
 
 ### Determine The Tie
-- [ ] Check if all of the columns are full, using the `isFull` method on each `Column` object.
-    - [ ] Put this behavior in the `Game` class.
-    - [ ] Declare an instance variable in the constructor named `winnerNumber`. You'll set that to `1` if Player One wins, `2` if Player Two wins, and `3` if both win (that is, it is a tie). Set `winnerNumber` in the constructor equal to `0` to indicate that no one has won.
+- [x] Check if all of the columns are full, using the `isFull` method on each `Column` object.
+    - [x] Put this behavior in the `Game` class.
+    - [x] Declare an instance variable in the constructor named `winnerNumber`. You'll set that to `1` if Player One wins, `2` if Player Two wins, and `3` if both win (that is, it is a tie). Set `winnerNumber` in the constructor equal to `0` to indicate that no one has won.
 
 ### Determine A Win Column Win
-- [ ] Create a new file named column-win-inspector.js. In it, create and export a class named `ColumnWinInspector`.
-    - [ ] Create a constructor that accepts a `Column` object.
-- [ ] Create a method named `inspect` that takes no parameters. In that method, have it check to see if the column has four contiguous tokens of the same player.
-    - [ ] If they do, return that player's number. Otherwise, return `0`.
+- [x] Create a new file named column-win-inspector.js. In it, create and export a class named `ColumnWinInspector`.
+    - [x] Create a constructor that accepts a `Column` object.
+- [x] Create a method named `inspect` that takes no parameters. In that method, have it check to see if the column has four contiguous tokens of the same player.
+    - [x] If they do, return that player's number. Otherwise, return `0`.
 - In the game.js file
-    - [ ] import the `ColumnWinInspector` class so that you can use it.
-    - [ ] Create a new method in the `Game` class called `checkForColumnWin`. Call it after you call the `checkForTie` method in the `playInColumn` method.
+    - [x] import the `ColumnWinInspector` class so that you can use it.
+    - [x] Create a new method in the `Game` class called `checkForColumnWin`. Call it after you call the `checkForTie` method in the `playInColumn` method.
         - [ ] If the value of `winnerNumber` is already non-zero, skip the method.
         - [ ] In the `checkForColumnWin`, loop over every column in the `columns` array.
             - [ ] For each column, create a new instance of the `ColumnWinInspector` class handing it the column that you're currently inspecting.
