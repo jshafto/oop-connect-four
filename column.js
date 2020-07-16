@@ -23,4 +23,12 @@ export class Column {
         if(!this.tokens[rowIndex]) return null;
         return this.tokens[rowIndex];
     }
+
+    isFull () {
+        if (this.tokens[0]) {
+            return true;
+        }
+        return false;
+        
+    }
 }
