@@ -11,24 +11,24 @@ The UI is already created at the start of the project, but the game has not been
 
 ### Start a new game
 - In `index.html`
-    - [ ] Add the "is-invisible" class to #board-holder.
-    - [ ] Add the "disabled" attribute to #new-game.
+    - [x] Add the "is-invisible" class to #board-holder.
+    - [x] Add the "disabled" attribute to #new-game.
 - In connect-four.js: Add an event handler for the window's "DOMContentLoaded" event. In that handler, have it:
-    - [ ] At the top of the file, declare a global variable named `game` and set it to `undefined`.
-    - [ ] Create an event handler for the "keyup" event of `#player-1-name`. In the event handler, have it set #new-game's "disabled" property to false if both #player-1-name and #player-2-name have non-empty content, enable #new-game. Otherwise, disable #new-game.
-    - [ ] Create an event handler for the "keyup" event of `#player-2-name`. In this event handler, do the exact same thing you did in the `#player-1-name` handler. Now, think, did you copy and paste some code? If so, can you refactor it somehow to remove duplication because the intended behavior is identical?
-    - [ ] Create an event handler for the "click" event of `#new-game` that, when clicked:
-        - [ ] Sets the global variable game to a new instance of the Game class passing in the two players' names.
-        - [ ] Sets the values of the two player name input elements to empty strings.
-        - [ ] Sets the disabled property on `#new-game` to `true`, thereby disabling it. (See if you have this functionality already written somewhere and, if you do, somehow reuse it so prevent code duplication.)
-        -[ ] Calls a function named `updateUI()`.
-    - [ ] Declare a function named `updateUI()` after the `game` variable declaration and before the event listener for "DOMContentLoaded". In that function, put the following logic:
-        - [ ] If `game` is `undefined`, have it add the "is-invisible" class to `#board-holder`.
-        - [ ] If `game` is not `undefined` have it remove the "is-invisible" class from `#board-holder` and set the inner HTML of the `#game-name` element to the value returned by the `getName()` function of the object stored in the `game` variable.
-    - [ ] At the top of the file, import the `Game` class from the file at the path `./game.js` using `import { Game } from './game.js'`; because you want to load a file that will contain the `Game` class. Remember that you have to use the ".js" on the file name because you're loading these directly in the browser.
-- [ ] Create a file named `game.js` in the same directory as the `connect-four.js` file. In that file, declare and export a class named `Game` that has
-    - [ ] A constructor that takes the names of the two players and sets them to instance variables on the object. (Remember that creating instance variables requires the use of the `this` keyword, such as `this.name1 = playerOneName`;, for example, creates an instance variable named `name1` and sets it to the value of `playerOneName`.)
-    - [ ] A method named `getName()` that returns a string of _"Player 1 Name vs. Player 2 Name"_.
+    - [x] At the top of the file, declare a global variable named `game` and set it to `undefined`.
+    - [x] Create an event handler for the "keyup" event of `#player-1-name`. In the event handler, have it set #new-game's "disabled" property to false if both #player-1-name and #player-2-name have non-empty content, enable #new-game. Otherwise, disable #new-game.
+    - [x] Create an event handler for the "keyup" event of `#player-2-name`. In this event handler, do the exact same thing you did in the `#player-1-name` handler. Now, think, did you copy and paste some code? If so, can you refactor it somehow to remove duplication because the intended behavior is identical?
+    - [x] Create an event handler for the "click" event of `#new-game` that, when clicked:
+        - [x] Sets the global variable game to a new instance of the Game class passing in the two players' names.
+        - [x] Sets the values of the two player name input elements to empty strings.
+        - [x] Sets the disabled property on `#new-game` to `true`, thereby disabling it. (See if you have this functionality already written somewhere and, if you do, somehow reuse it so prevent code duplication.)
+        -[x] Calls a function named `updateUI()`.
+    - [x] Declare a function named `updateUI()` after the `game` variable declaration and before the event listener for "DOMContentLoaded". In that function, put the following logic:
+        - [x] If `game` is `undefined`, have it add the "is-invisible" class to `#board-holder`.
+        - [x] If `game` is not `undefined` have it remove the "is-invisible" class from `#board-holder` and set the inner HTML of the `#game-name` element to the value returned by the `getName()` function of the object stored in the `game` variable.
+    - [x] At the top of the file, import the `Game` class from the file at the path `./game.js` using `import { Game } from './game.js'`; because you want to load a file that will contain the `Game` class. Remember that you have to use the ".js" on the file name because you're loading these directly in the browser.
+- [x] Create a file named `game.js` in the same directory as the `connect-four.js` file. In that file, declare and export a class named `Game` that has
+    - [x] A constructor that takes the names of the two players and sets them to instance variables on the object. (Remember that creating instance variables requires the use of the `this` keyword, such as `this.name1 = playerOneName`;, for example, creates an instance variable named `name1` and sets it to the value of `playerOneName`.)
+    - [x] A method named `getName()` that returns a string of _"Player 1 Name vs. Player 2 Name"_.
 
 ### Indicating The Current Player
 
