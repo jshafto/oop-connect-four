@@ -33,20 +33,20 @@ The UI is already created at the start of the project, but the game has not been
 ### Indicating The Current Player
 
 - In game.js:
-    - [ ] In the constructor of the `Game` class, create a new instance variable to track the current player and set it to `1` to indicate that its the first player.
-    - [ ] Create a method called `playInColumn()` that will handle the click of the user. In that method, change the value of the current player to the other player. If it was `1`, then make it `2`; otherwise, make it `1`.
+    - [x] In the constructor of the `Game` class, create a new instance variable to track the current player and set it to `1` to indicate that its the first player.
+    - [x] Create a method called `playInColumn()` that will handle the click of the user. In that method, change the value of the current player to the other player. If it was `1`, then make it `2`; otherwise, make it `1`.
 - In connect-four.js:
-    - [ ] In the event handler for "DOMContentLoaded", register an event handler for the "click" event on `#click-targets`.
-    - [ ] In the `#click-targets` event handler that you just created, have it call the `playInColumn` method of the object in the global variable `game`. Then, have it call the `updateUI` method.
-    - [ ] In the `updateUI` method, in the portion of the code that uses the `game` object, have it get the current player from the instance variable that you created in the constructor of the `Game` class. Use that value to determine if you need to add "red" and remove "black" from the `#click-targets` element for player two, or if you need to add "black" and remove "red" for player one from that element.
+    - [x] In the event handler for "DOMContentLoaded", register an event handler for the "click" event on `#click-targets`.
+    - [x] In the `#click-targets` event handler that you just created, have it call the `playInColumn` method of the object in the global variable `game`. Then, have it call the `updateUI` method.
+    - [x] In the `updateUI` method, in the portion of the code that uses the `game` object, have it get the current player from the instance variable that you created in the constructor of the `Game` class. Use that value to determine if you need to add "red" and remove "black" from the `#click-targets` element for player two, or if you need to add "black" and remove "red" for player one from that element.
 
 ### Placing A Played Token
 #### Create the "Column" class
 - In the column.js file:
-    - [ ] Create and export a class named `Column`.
-    - [ ] Create a constructor that will create a way to manage the tokens stored in the column.
-    - [ ] Create a method named `add` that takes a player number and stores it in the "bottom-most" entry in the column.
-    - [ ] Create a method named `getTokenAt` which takes a row index number between `0` and `5` and returns `null` if there's no token there, `1` if player one's token is there, or `2` if player two's token is there.
+    - [x] Create and export a class named `Column`.
+    - [x] Create a constructor that will create a way to manage the tokens stored in the column.
+    - [x] Create a method named `add` that takes a player number and stores it in the "bottom-most" entry in the column.
+    - [x] Create a method named `getTokenAt` which takes a row index number between `0` and `5` and returns `null` if there's no token there, `1` if player one's token is there, or `2` if player two's token is there.
 
 #### Create "Column" objects in the "Game" class
 - In game.js:

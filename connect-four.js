@@ -9,7 +9,34 @@ let updateUI = () => {
         document
             .getElementById("game-name")
             .innerHTML = game.getName();
+
+        let clickTarget = document.getElementById("click-targets");
+        if (game.currentPlayer === 1) {
+            clickTarget.classList.add("red");
+            clickTarget.classList.remove("black");
+        } else {
+            clickTarget.classList.add("black");
+            clickTarget.classList.remove("red");
+        }
+        for (let row = 0; row <= 5; row ++) {
+            for (let col = 0; col <=  6; col ++) {
+                let square = document.getElementById(`square-${row}-${col}`);
+                let newDiv = document.createElement("div");
+                square.innerHTML = "";
+                // console.log(square);
+                if (game.getTokenAt(row, col) === 1) {
+                    newDiv.classList.add("token", "black")
+                    square.appendChild(newDiv);
+                } else if (game.getTokenAt(row, col) === 2){
+                    newDiv.classList.add("token", "red");
+                    square.appendChild(newDiv);
+                }
+                
+            }
+
+        }
     }
+
 }
 window.addEventListener("DOMContentLoaded", (event) => {
 
@@ -28,6 +55,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
      }
     })
     
+    document.getElementById("click-targets").addEventListener("click", (event) => {
+        if (event.target.id.startsWith("column-")) {
+            let colNum = Number.parseInt(event.target.id[7]);
+            game.playInColumn(colNum);
+            updateUI();
+        }
+    })
+
     const newGame = document.getElementById("new-game");
     newGame.addEventListener("click", event => {
         game = new Game(playerOneName.value, playerTwoName.value);
