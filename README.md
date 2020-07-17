@@ -5,7 +5,7 @@ This project is part of the object-oriented programming curriculum at App
 Academy. This implemenation is by Juliet Shafto and Yongho Kim.
 
 ### Project Status
-The game works and all win conditions are accounted for, but the game state is not preserved when the page is refreshed.
+The game works and all win conditions are accounted for, and the state of teh game is preserved when the page is refreshed. Token drop is not animated.
 
 ## Project Requirements
 
@@ -125,24 +125,24 @@ The game works and all win conditions are accounted for, but the game state is n
 
 ### Saving Game State
 #### Save the Game Into Local Storage
-- [ ] Create and export a `GameJsonSerializer` class.
-- [ ] Have its constructor take a `Game` object.
-- [ ] The serializer should only talk directly to the `Game` object.
-    - [ ] get the data out and store it in a way that you can put it back into a `Game` object using only the methods and properties available to you, namely:
+- [x] Create and export a `GameJsonSerializer` class.
+- [x] Have its constructor take a `Game` object.
+- [x] The serializer should only talk directly to the `Game` object.
+    - [x] get the data out and store it in a way that you can put it back into a `Game` object using only the methods and properties available to you, namely:
         - `getTokenAt(rowIndex, columnIndex)`
         - `player1Name`
         - `player2Name`
         - `playInColumn(columnIndex)`
 
 #### Save the Game Into Local Storage
-- Declare and export a class named `GameJsonDeserializer` which has a constructor that accepts the JSON string.
-- It should have a `deserialize` method that calls `JSON.parse` on the JSON string.
-- Then, it should create a new instance of the `Game` class and pass in the save player names to the constructor.
-- Then, using the `playInColumn` method, you need to restore the state of the board. Once you've done that, return that configured `Game` object.
+- [x] Declare and export a class named `GameJsonDeserializer` which has a constructor that accepts the JSON string.
+- [x] It should have a `deserialize` method that calls `JSON.parse` on the JSON string.
+- [x] Then, it should create a new instance of the `Game` class and pass in the save player names to the constructor.
+- [x] Then, using the `playInColumn` method, you need to restore the state of the board. Once you've done that, return that configured `Game` object.
 
 #### Integrating the storage methods
-- [ ] Use the `GameJsonSerializer` at the end of the handler for the click targets. Create a new serializer by passing in the `Game` object into its constructor, call `serialize` on it, and save the returned string into local storage.
-- [ ] Use the `GameJsonDeserializer` as the last line of the "DOMContentLoaded" handler.
+- [x] Use the `GameJsonSerializer` at the end of the handler for the click targets. Create a new serializer by passing in the `Game` object into its constructor, call `serialize` on it, and save the returned string into local storage.
+- [x] Use the `GameJsonDeserializer` as the last line of the "DOMContentLoaded" handler.
     - It should read a value from local storage and, if that value's not `null`, then create an instance of the `deserializer` and pass the string into its constructor.
     - Call the `deserialize` method and set the global game variable to the return value.
     - Call `updateUI` because you now have a game!
