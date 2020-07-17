@@ -1,4 +1,6 @@
 import { Game } from './game.js';
+import { GameJsonSerializer } from "./game-json-serializer.js";
+import { GameJsonDeserializer } from "./game-json-deserializer.js";
 let game = undefined;
 let updateUI = () => {
     let boardHolder = document.getElementById("board-holder");
@@ -7,9 +9,9 @@ let updateUI = () => {
     } else {
         boardHolder.classList.remove("is-invisible");
         document
-            .getElementById("game-name")
-            .innerHTML = game.getName();
-
+        .getElementById("game-name")
+        .innerHTML = game.getName();
+        
         let clickTarget = document.getElementById("click-targets");
         if (game.currentPlayer === 1) {
             clickTarget.classList.add("red");
@@ -33,7 +35,7 @@ let updateUI = () => {
                 }
                 
             }
-
+            
         }
         for (let i = 0; i <= 6; i ++) {
             let col = document.getElementById(`column-${i}`);
@@ -43,8 +45,13 @@ let updateUI = () => {
                 col.classList.remove("full");
             }
         }
-    }
 
+        // let test = new GameJsonSerializer(game);
+        // // console.log("test.serialize  : ", test.serialize());
+        // let test2 = new GameJsonDeserializer(test.serialize());
+        // console.log(test2.deserialize());
+    }
+    
 }
 window.addEventListener("DOMContentLoaded", (event) => {
 
@@ -68,6 +75,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
             let colNum = Number.parseInt(event.target.id[7]);
             game.playInColumn(colNum);
             updateUI();
+            // create a new GameJsonSerializer on the game object
+            let serializer = new GameJsonSerializer(game);
+            localStorage.setItem("saveGame", serializer.serialize());
+            // store the returned string in local storage
         }
     })
 
@@ -79,5 +90,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
         newGame.disabled = true;
         updateUI();
     })
+    let saveGame = localStorage.getItem("saveGame");
+    if (saveGame) {
+        let deserializer = new GameJsonDeserializer(saveGame);
+        game = deserializer.deserialize();
+        updateUI();
+    }
+    // read value from local storage
+    // if it is not null, then make desserializer and pass
+    // the string from local storage to the constructor
+    // use the deserialize method on it and 
+    // game = deserializer.deserialize();
 
 })

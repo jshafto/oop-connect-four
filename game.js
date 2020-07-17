@@ -2,6 +2,8 @@ import { Column } from './column.js';
 import { ColumnWinInspector } from './column-win-inspector.js'
 import { RowWinInspector } from './row-win-inspector.js'
 import { DiagonalWinInspector } from './diagonal-win-inspector.js'
+import { GameJsonSerializer } from "./game-json-serializer.js";
+import { GameJsonDeserializer } from "./game-json-deserializer.js";
 
 
 export class Game{ 
@@ -11,6 +13,7 @@ export class Game{
         this.currentPlayer = 1; 
         this.columns = [
             new Column(), 
+
             new Column(), 
             new Column(), 
             new Column(), 
@@ -19,6 +22,7 @@ export class Game{
             new Column()
         ];
         this.winnerNumber = 0;
+        this.movesList = [];
     }
     getName() {
         if (this.winnerNumber ===3) { 
@@ -33,6 +37,7 @@ export class Game{
         return `${this.name1} vs ${this.name2}`;
     }
     playInColumn(columnInd) {
+        this.movesList.push(columnInd);
         this.columns[columnInd].add(this.currentPlayer);
 
         switch (this.currentPlayer) {
@@ -48,8 +53,7 @@ export class Game{
         this.checkForColumnWin();
         this.checkForRowWin();
         this.checkForDiagonalWin();
-
-       
+        
     }
 
     getTokenAt(rowInd, columnInd) {
