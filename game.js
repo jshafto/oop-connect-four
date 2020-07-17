@@ -1,5 +1,7 @@
 import { Column } from './column.js';
 import { ColumnWinInspector } from './column-win-inspector.js'
+import { RowWinInspector } from './row-win-inspector.js'
+
 
 export class Game{ 
     constructor(playerOneName, playerTwoName){
@@ -43,6 +45,7 @@ export class Game{
 
         this.checkForTie();
         this.checkForColumnWin();
+        this.checkForRowWin();
 
        
     }
@@ -79,4 +82,16 @@ export class Game{
         
     }
 
+    checkForRowWin() {
+        if (this.winnerNumber) return;
+        for (let i = 0; i < 4; i ++) {
+            let rowInspector = new RowWinInspector(this.columns.slice(i, i+4));
+            //console.log(rowInspector.columns)
+            //console.log(this.columns.slice(i, i+4))
+            if (rowInspector.inspect()){
+                this.winnerNumber = rowInspector.inspect();
+                return;
+            }
+        }
+    }
 } 
