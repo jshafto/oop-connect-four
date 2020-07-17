@@ -1,6 +1,7 @@
 import { Column } from './column.js';
 import { ColumnWinInspector } from './column-win-inspector.js'
 import { RowWinInspector } from './row-win-inspector.js'
+import { DiagonalWinInspector } from './diagonal-win-inspector.js'
 
 
 export class Game{ 
@@ -46,6 +47,7 @@ export class Game{
         this.checkForTie();
         this.checkForColumnWin();
         this.checkForRowWin();
+        this.checkForDiagonalWin();
 
        
     }
@@ -83,13 +85,29 @@ export class Game{
     }
 
     checkForRowWin() {
+        // console.log("Checking for Row Win")
         if (this.winnerNumber) return;
         for (let i = 0; i < 4; i ++) {
             let rowInspector = new RowWinInspector(this.columns.slice(i, i+4));
-            //console.log(rowInspector.columns)
-            //console.log(this.columns.slice(i, i+4))
-            if (rowInspector.inspect()){
-                this.winnerNumber = rowInspector.inspect();
+            // console.log(rowInspector.columns)
+            // console.log(this.columns.slice(i, i+4))
+            let rowInspect = rowInspector.inspect();
+            // console.log("rowInspect: ", rowInspect);
+            if (rowInspect){
+                // console.log("winnerNumber: ", winnerNumber);
+                this.winnerNumber = rowInspect;
+                return;
+            }
+        }
+    }
+
+    checkForDiagonalWin () {
+        if (this.winnerNumber) return;
+        for (let i = 0; i < 4; i ++) {
+            let diagonalInspector = new DiagonalWinInspector(this.columns.slice(i, i+4));
+            let diagonalInspect = diagonalInspector.inspect();
+            if (diagonalInspect) {
+                this.winnerNumber = diagonalInspect;
                 return;
             }
         }
