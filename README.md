@@ -5,7 +5,7 @@ This project is part of the object-oriented programming curriculum at App
 Academy. This implemenation is by Juliet Shafto and Yongho Kim.
 
 ### Project Status
-Game will check for ties and column wins, but rows wins are not counted. The RowWinInspector is present but does not successfully check for row wins.
+The game works and all win conditions are accounted for, but the game state is not preserved when the page is refreshed.
 
 ## Project Requirements
 
@@ -108,20 +108,20 @@ Game will check for ties and column wins, but rows wins are not counted. The Row
     - [x] Create a file named row-win-inspector.js.
     - [x] Create and export a class named `RowWinInspector`.
     - [x] Declare the constructor to have a `columns` parameter that should contain four column objects. Save them in an instance variable.
-    - [ ] Create an `inspect` method (with no parameters) that loops through the six rows and checks the token at each row in each of the columns. If any of the rows have identical entries in all four areas, then return the value of that winner's number. Otherwise, if there is no winner, return `0`.
+    - [x] Create an `inspect` method (with no parameters) that loops through the six rows and checks the token at each row in each of the columns. If any of the rows have identical entries in all four areas, then return the value of that winner's number. Otherwise, if there is no winner, return `0`.
 - In `Game` class:
     - [x] At the end of the `playInColumn` method, call a new method, this time named `checkForRowWin`.
     - [x] Create the `checkForRowWin` method in the `Game` class.
     - [x] If the value of `winnerNumber` is already non-zero, skip the method.
     - [x] Slice the `columns` array with groups of columns 0 - 3, 1 - 4, 2 - 5, and 3 - 6.
     - [x] For each of those slices, create a new instance of the `RowWinInspector` class.
-    - [ ] Call the `RowWinInspector` class' `inspect` method. If the return value is greater than `0`, then set the winner number and break.
+    - [x] Call the `RowWinInspector` class' `inspect` method. If the return value is greater than `0`, then set the winner number and break.
 
 ### Determine a Diagonal Win
-- [ ] Create an inspector just for the diagonals.
-- [ ] Do the same kind of column splicing.
-- [ ] Check the diagonals in both directions inside the slice. Return the value if you find four entries.
-- [ ] Hook it up into the `Game` the same way that you did `checkForTie`, `checkForColumnWin`, and `checkForRowWin`.
+- [x] Create an inspector just for the diagonals.
+- [x] Do the same kind of column splicing.
+- [x] Check the diagonals in both directions inside the slice. Return the value if you find four entries.
+- [x] Hook it up into the `Game` the same way that you did `checkForTie`, `checkForColumnWin`, and `checkForRowWin`.
 
 ### Saving Game State
 #### Save the Game Into Local Storage
